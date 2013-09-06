@@ -27,3 +27,7 @@
 %		end
 %	end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+function y = convertToBinary(Image)
+t = adaptiveThreshold(Image)
+y = im2bw(Image,t)
+end
