@@ -29,3 +29,18 @@
 %	[~,lag] = min(R[128:])
 %	t = lag + 10
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+function t = adaptiveThreshold(occurrences,n)
+x = occurrences
+
+%normalizing x
+y = (x > n/100)
+
+%rectangular window function with width 20
+z = zeros(256)
+z[1:20] = ones(20)
+
+R = xcorr(y,z,127)
+[~,lag] = min(R[128:1])
+t = lag + 10
+end
